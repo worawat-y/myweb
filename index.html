@@ -229,7 +229,7 @@
   <div class="cursor"></div>
   <div id="dots"></div>
 
-  <!-- Header -->
+ <!-- Header -->
   <header>
     <div class="brand">
       <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple Logo" />
@@ -348,16 +348,13 @@
       modalContent.innerHTML = content + `<button class="close-btn" onclick="closeModal()">ปิด</button>`;
       modal.style.display = 'flex';
     }
-<!-- Slideshow -->
-  <div class="slideshow">
-    <img src="https://s.isanook.com/hi/0/ud/317/1588155/iphone-15-thum.jpg?ip/resize/w728/q80/jpg" class="active" alt="iPhone 15">
-    <img src="https://s.isanook.com/hi/0/ud/317/1588159/apple-iphone-15-pro-max-11.jpg?ip/resize/w728/q80/jpg" alt="iPhone 15 Pro Max">
-  </div>
 
-  <!-- Cursor Effect -->
-  <div class="cursor-dot"></div>
-
+    function closeModal() {
+      modal.style.display = 'none';
+    }
   </script>
+</body>
+	 </script>
 </body>
 	<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
 <script type="module">

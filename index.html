@@ -357,22 +357,6 @@
   <!-- Cursor Effect -->
   <div class="cursor-dot"></div>
 
-  <script>
-    // ===== Cursor effect =====
-    const cursorDot = document.querySelector('.cursor-dot');
-    document.addEventListener('mousemove', e => {
-      cursorDot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-    });
-
-    // ===== Slideshow =====
-    const slides = document.querySelectorAll('.slideshow img');
-    let current = 0;
-    setInterval(() => {
-      slides[current].classList.remove('active');
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('active');
-    }, 3000);
-
   </script>
 </body>
 	<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />

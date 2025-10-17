@@ -348,10 +348,31 @@
       modalContent.innerHTML = content + `<button class="close-btn" onclick="closeModal()">ปิด</button>`;
       modal.style.display = 'flex';
     }
+<!-- Slideshow -->
+  <div class="slideshow">
+    <img src="https://s.isanook.com/hi/0/ud/317/1588155/iphone-15-thum.jpg?ip/resize/w728/q80/jpg" class="active" alt="iPhone 15">
+    <img src="https://s.isanook.com/hi/0/ud/317/1588159/apple-iphone-15-pro-max-11.jpg?ip/resize/w728/q80/jpg" alt="iPhone 15 Pro Max">
+  </div>
 
-    function closeModal() {
-      modal.style.display = 'none';
-    }
+  <!-- Cursor Effect -->
+  <div class="cursor-dot"></div>
+
+  <script>
+    // ===== Cursor effect =====
+    const cursorDot = document.querySelector('.cursor-dot');
+    document.addEventListener('mousemove', e => {
+      cursorDot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    });
+
+    // ===== Slideshow =====
+    const slides = document.querySelectorAll('.slideshow img');
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 3000);
+
   </script>
 </body>
 	<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />

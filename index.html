@@ -50,16 +50,23 @@
       z-index: 100;
     }
 
-    header h1 {
+    /* กล่องรวมโลโก้กับชื่อ */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand img {
+      width: 30px;
+      height: 30px;
+      filter: grayscale(100%) brightness(0.3);
+    }
+
+    .brand h1 {
       font-size: 1.4rem;
       color: #333;
       letter-spacing: 0.5px;
-    }
-
-    .logo {
-      width: 40px;
-      height: 40px;
-      filter: grayscale(100%) brightness(0.3);
     }
 
     /* ===== Hero Section ===== */
@@ -220,8 +227,6 @@
 </head>
 <body>
   <div class="cursor"></div>
-
-  <!-- จุดเคลื่อนไหว -->
   <div id="dots"></div>
 
   <!-- Header -->
@@ -329,13 +334,13 @@
         content = `
           <img src="https://static-jaymart.com/ecom/public/2VNQRsP7QG16v6TaQDBt4lSiPfC.jpg" alt="iPhone 15 Pro">
           <h3>iPhone 15 Pro</h3>
-          <p>ขนาด 6.1 นิ้ว · ความจุ 128GB / 256GB / 512GB / 1TB<br>วัสดุตัวเครื่อง: Titanium · Natural Titanium, Black Titanium, Blue Titanium, White Titanium</p>
+          <p>ขนาด 6.1 นิ้ว · ความจุ 128GB / 256GB / 512GB / 1TB<br>Natural Titanium, Black Titanium, Blue Titanium, White Titanium</p>
         `;
       } else if (model === '15promax') {
         content = `
           <img src="https://static-jaymart.com/ecom/public/2VNWWd62bB3e7aMx5BatMbgShBo.jpg" alt="iPhone 15 Pro Max">
           <h3>iPhone 15 Pro Max</h3>
-          <p>ขนาด 6.7 นิ้ว · ความจุ 256GB / 512GB / 1TB<br>วัสดุตัวเครื่อง: Titanium · Natural Titanium, Black Titanium, Blue Titanium, White Titanium</p>
+          <p>ขนาด 6.7 นิ้ว · ความจุ 256GB / 512GB / 1TB<br>Natural Titanium, Black Titanium, Blue Titanium, White Titanium</p>
         `;
       }
       modalContent.innerHTML = content + `<button class="close-btn" onclick="closeModal()">ปิด</button>`;

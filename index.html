@@ -1,111 +1,136 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Apple Store</title>
-
-  <!-- ฟอนต์โมเดิร์น -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== พื้นฐาน ===== */
+    /* ===== Reset ===== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Inter', sans-serif;
+      cursor: none; /* ซ่อน cursor ปกติ */
     }
 
     body {
-      background: linear-gradient(145deg, #f5f5f5, #d7d7d7);
-      color: #111;
+      background: linear-gradient(145deg, #e9e9e9, #cfcfcf);
+      color: #1a1a1a;
       overflow-x: hidden;
-      min-height: 100vh;
     }
 
-    header {
+    /* ===== Custom Cursor ===== */
+    .cursor {
       position: fixed;
       top: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(15px);
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #888;
+      border-radius: 50%;
+      pointer-events: none;
+      transition: transform 0.1s ease;
+      mix-blend-mode: difference;
+      z-index: 9999;
+    }
+
+    /* ===== Header ===== */
+    header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 60px;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 25px 8%;
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.4);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+
+    header h1 {
+      font-size: 1.4rem;
+      color: #333;
+      letter-spacing: 0.5px;
     }
 
     .logo {
-      font-weight: 600;
-      font-size: 1.2rem;
-      letter-spacing: 0.5px;
-      color: #222;
+      width: 40px;
+      height: 40px;
+      filter: grayscale(100%) brightness(0.3);
     }
 
-    .apple-icon {
-      font-size: 1.8rem;
-      color: #222;
-    }
-
-    main {
-      padding-top: 120px;
+    /* ===== Hero Section ===== */
+    .hero {
       text-align: center;
+      padding: 80px 20px 50px;
     }
 
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      max-width: 1100px;
-      margin: 60px auto;
-    }
-
-    .product {
-      background: linear-gradient(135deg, #fdfdfd, #d9d9d9);
-      border-radius: 25px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-      padding: 30px 20px;
-      transition: 0.3s;
-      cursor: pointer;
-    }
-
-    .product:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-    }
-
-    .product img {
-      width: 160px;
-      height: auto;
-      margin-bottom: 20px;
-      transition: transform 0.3s ease;
-    }
-
-    .product:hover img {
-      transform: scale(1.05);
-    }
-
-    .product h3 {
+    .hero h2 {
+      font-size: 2.8rem;
       font-weight: 500;
       color: #111;
       margin-bottom: 10px;
     }
 
+    .hero p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 40px;
+    }
+
+    /* ===== Product Grid ===== */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      padding-bottom: 100px;
+    }
+
+    .product {
+      background: linear-gradient(145deg, #f8f8f8, #dcdcdc);
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .product img {
+      width: 100%;
+      height: 250px;
+      object-fit: contain;
+      margin-bottom: 20px;
+    }
+
+    .product h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: #111;
+    }
+
     .price {
-      color: #666;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      color: #333;
       margin-bottom: 15px;
     }
 
     .btn {
       display: inline-block;
-      background: #e8e8e8;
-      border: 1px solid #ccc;
+      padding: 10px 20px;
       border-radius: 30px;
-      padding: 8px 20px;
+      background: #e5e5e5;
+      border: 1px solid #c0c0c0;
       text-decoration: none;
       color: #111;
       font-weight: 500;
@@ -114,192 +139,211 @@
 
     .btn:hover {
       background: #fff;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
     footer {
       text-align: center;
+      padding: 30px;
       color: #777;
       font-size: 0.9rem;
-      padding: 30px 0;
-      margin-top: 40px;
     }
 
-    /* ===== จุดเคลื่อนไหว ===== */
+    /* ===== จุดขยับเบา ๆ ===== */
     .dot {
-      position: absolute;
-      width: 10px;
-      height: 10px;
+      position: fixed;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      background: radial-gradient(circle, #999, #555);
+      background: radial-gradient(circle, #bbb, #666);
       opacity: 0.4;
       pointer-events: none;
       transition: transform 0.3s ease-out;
-      z-index: 0;
+      z-index: 1;
     }
 
-    /* ===== Popup ===== */
-    .popup {
+    /* ===== Modal ===== */
+    .modal {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.4);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
       display: none;
       justify-content: center;
       align-items: center;
-      z-index: 2000;
+      z-index: 200;
     }
 
-    .popup-content {
-      background: white;
+    .modal-content {
+      background: #f5f5f5;
       border-radius: 20px;
       padding: 30px;
       width: 90%;
-      max-width: 400px;
+      max-width: 600px;
+      box-shadow: 0 5px 30px rgba(0,0,0,0.2);
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      animation: fadeIn 0.3s ease;
     }
 
-    .popup-content img {
-      width: 150px;
-      margin-bottom: 15px;
+    .modal-content img {
+      width: 70%;
+      margin-bottom: 20px;
     }
 
-    .popup-content h3 {
-      font-weight: 500;
+    .modal-content h3 {
+      font-size: 1.6rem;
       margin-bottom: 10px;
     }
 
-    .popup-content p {
-      color: #555;
-      margin-bottom: 10px;
+    .modal-content p {
+      color: #444;
+      font-size: 1rem;
+      margin-bottom: 20px;
     }
 
     .close-btn {
-      background: #f2f2f2;
+      background: #ddd;
       border: none;
-      padding: 10px 25px;
-      border-radius: 30px;
+      border-radius: 20px;
+      padding: 8px 20px;
       cursor: pointer;
       font-weight: 500;
-      transition: 0.3s;
     }
 
-    .close-btn:hover {
-      background: #e2e2e2;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
+  <div class="cursor"></div>
 
+  <!-- จุดเคลื่อนไหว -->
+  <div id="dots"></div>
+
+  <!-- Header -->
   <header>
-    <div class="logo">Apple Store</div>
-    <div class="apple-icon"></div>
+    <h1>Apple Store</h1>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="logo" alt="Apple Logo" />
   </header>
 
-  <main>
-    <h2 style="font-weight:500; font-size:2.2rem;">iPhone 15 Series</h2>
-    <p style="color:#555; margin-top:10px;">เลือกดูรุ่นที่ใช่สำหรับคุณ</p>
+  <!-- Hero -->
+  <section class="hero">
+    <h2>iPhone 15 Series</h2>
+    <p>Experience titanium design and next-level performance.</p>
+  </section>
 
-    <div class="product-grid">
-      <div class="product" onclick="showDetails('iPhone 15')">
-        <img src="https://www.apple.com/v/iphone-15/a/images/overview/hero/hero_iphone15__f8u9t9ulc3e2_large.jpg" alt="iPhone 15">
-        <h3>iPhone 15</h3>
-        <div class="price">เริ่มต้นที่ 32,900 บาท</div>
-        <a href="#" class="btn">ดูรายละเอียด</a>
-      </div>
-
-      <div class="product" onclick="showDetails('iPhone 15 Plus')">
-        <img src="https://www.apple.com/v/iphone-15/a/images/overview/hero/hero_iphone15plus__f8u9t9ulc3e2_large.jpg" alt="iPhone 15 Plus">
-        <h3>iPhone 15 Plus</h3>
-        <div class="price">เริ่มต้นที่ 37,900 บาท</div>
-        <a href="#" class="btn">ดูรายละเอียด</a>
-      </div>
-
-      <div class="product" onclick="showDetails('iPhone 15 Pro')">
-        <img src="https://www.apple.com/v/iphone-15-pro/a/images/overview/hero/hero_iphone15pro__eqn6b7vve0qe_large.jpg" alt="iPhone 15 Pro">
-        <h3>iPhone 15 Pro</h3>
-        <div class="price">เริ่มต้นที่ 41,900 บาท</div>
-        <a href="#" class="btn">ดูรายละเอียด</a>
-      </div>
-
-      <div class="product" onclick="showDetails('iPhone 15 Pro Max')">
-        <img src="https://www.apple.com/v/iphone-15-pro/a/images/overview/hero/hero_iphone15promax__eqn6b7vve0qe_large.jpg" alt="iPhone 15 Pro Max">
-        <h3>iPhone 15 Pro Max</h3>
-        <div class="price">เริ่มต้นที่ 48,900 บาท</div>
-        <a href="#" class="btn">ดูรายละเอียด</a>
-      </div>
+  <!-- Products -->
+  <section class="products">
+    <div class="product">
+      <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pink-hero" alt="iPhone 15">
+      <h3>iPhone 15</h3>
+      <div class="price">เริ่มต้นที่ ฿32,900</div>
+      <a href="#" class="btn" onclick="showDetails('15')">ดูรายละเอียด</a>
     </div>
-  </main>
 
-  <footer>
-    © 2025 Apple Store Clone (for learning purpose)
-  </footer>
+    <div class="product">
+      <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-plus-yellow-hero" alt="iPhone 15 Plus">
+      <h3>iPhone 15 Plus</h3>
+      <div class="price">เริ่มต้นที่ ฿37,900</div>
+      <a href="#" class="btn" onclick="showDetails('15plus')">ดูรายละเอียด</a>
+    </div>
 
-  <!-- Popup -->
-  <div class="popup" id="popup">
-    <div class="popup-content" id="popup-content">
-      <img id="popup-img" src="" alt="">
-      <h3 id="popup-title"></h3>
-      <p id="popup-info"></p>
-      <button class="close-btn" onclick="closePopup()">ปิด</button>
+    <div class="product">
+      <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-titanium-black-hero" alt="iPhone 15 Pro">
+      <h3>iPhone 15 Pro</h3>
+      <div class="price">เริ่มต้นที่ ฿41,900</div>
+      <a href="#" class="btn" onclick="showDetails('15pro')">ดูรายละเอียด</a>
+    </div>
+
+    <div class="product">
+      <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-max-titanium-nature-hero" alt="iPhone 15 Pro Max">
+      <h3>iPhone 15 Pro Max</h3>
+      <div class="price">เริ่มต้นที่ ฿48,900</div>
+      <a href="#" class="btn" onclick="showDetails('15promax')">ดูรายละเอียด</a>
+    </div>
+  </section>
+
+  <footer>© 2025 Apple Store. Inspired by Apple.</footer>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content" id="modal-content">
+      <h3>iPhone</h3>
+      <p>รายละเอียดสินค้า</p>
+      <button class="close-btn" onclick="closeModal()">ปิด</button>
     </div>
   </div>
 
   <script>
-    // จุดเคลื่อนไหว
+    /* ===== Custom Cursor ===== */
+    const cursor = document.querySelector('.cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
+    });
+
+    /* ===== จุดขยับเบา ๆ ===== */
+    const NUM_DOTS = 20;
+    const dotsContainer = document.getElementById('dots');
     const dots = [];
-    for (let i = 0; i < 15; i++) {
-      const dot = document.createElement('div');
-      dot.classList.add('dot');
-      document.body.appendChild(dot);
-      dots.push({ el: dot, x: 0, y: 0 });
+    for (let i = 0; i < NUM_DOTS; i++) {
+      const d = document.createElement('div');
+      d.classList.add('dot');
+      dotsContainer.appendChild(d);
+      dots.push({ el: d, x: 0, y: 0 });
     }
     document.addEventListener('mousemove', (e) => {
-      dots.forEach((dot, i) => {
-        const delay = i * 0.02;
+      dots.forEach((dot, index) => {
+        const delay = index * 0.03;
         setTimeout(() => {
           dot.x = e.pageX;
           dot.y = e.pageY;
-          dot.el.style.transform = `translate(${dot.x}px, ${dot.y}px) scale(${1 - i * 0.05})`;
+          dot.el.style.transform = `translate(${dot.x}px, ${dot.y}px) scale(${1 - index * 0.04})`;
+          dot.el.style.opacity = 0.4 - index * 0.02;
         }, delay * 100);
       });
     });
 
-    // Popup แสดงรายละเอียดสินค้า
+    /* ===== Modal Details ===== */
+    const modal = document.getElementById('modal');
+    const modalContent = document.getElementById('modal-content');
+
     function showDetails(model) {
-      const popup = document.getElementById("popup");
-      const title = document.getElementById("popup-title");
-      const info = document.getElementById("popup-info");
-      const img = document.getElementById("popup-img");
-
-      const data = {
-        "iPhone 15": {
-          info: "ขนาด 6.1 นิ้ว • ความจุ 128GB / 256GB / 512GB • สีชมพู, เหลือง, เขียว, น้ำเงิน, ดำ",
-          img: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-15-pink-select-2023?wid=940&hei=1112&fmt=png-alpha&.v=1692925220312"
-        },
-        "iPhone 15 Plus": {
-          info: "ขนาด 6.7 นิ้ว • ความจุ 128GB / 256GB / 512GB • สีชมพู, เหลือง, เขียว, น้ำเงิน, ดำ",
-          img: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-15-blue-select-2023?wid=940&hei=1112&fmt=png-alpha&.v=1692925200291"
-        },
-        "iPhone 15 Pro": {
-          info: "ขนาด 6.1 นิ้ว • ความจุ 128GB / 256GB / 512GB / 1TB • สีไทเทเนียมธรรมชาติ, สีฟ้าไทเทเนียม, สีดำไทเทเนียม, สีขาวไทเทเนียม",
-          img: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-15-pro-natural-titanium-select-2023?wid=940&hei=1112&fmt=png-alpha&.v=1692829304506"
-        },
-        "iPhone 15 Pro Max": {
-          info: "ขนาด 6.7 นิ้ว • ความจุ 256GB / 512GB / 1TB • สีไทเทเนียมธรรมชาติ, สีฟ้าไทเทเนียม, สีดำไทเทเนียม, สีขาวไทเทเนียม",
-          img: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-15-pro-max-blue-titanium-select-2023?wid=940&hei=1112&fmt=png-alpha&.v=1692846357013"
-        }
-      };
-
-      title.textContent = model;
-      info.textContent = data[model].info;
-      img.src = data[model].img;
-      popup.style.display = "flex";
+      let content = '';
+      if (model === '15') {
+        content = `
+          <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pink-hero" alt="iPhone 15">
+          <h3>iPhone 15</h3>
+          <p>ขนาด 6.1 นิ้ว · ความจุ 128GB / 256GB / 512GB<br>มีสีชมพู, เหลือง, เขียว, น้ำเงิน, ดำ</p>
+        `;
+      } else if (model === '15plus') {
+        content = `
+          <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-plus-yellow-hero" alt="iPhone 15 Plus">
+          <h3>iPhone 15 Plus</h3>
+          <p>ขนาด 6.7 นิ้ว · ความจุ 128GB / 256GB / 512GB<br>มีสีชมพู, เหลือง, เขียว, น้ำเงิน, ดำ</p>
+        `;
+      } else if (model === '15pro') {
+        content = `
+          <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-titanium-black-hero" alt="iPhone 15 Pro">
+          <h3>iPhone 15 Pro</h3>
+          <p>ขนาด 6.1 นิ้ว · ความจุ 128GB / 256GB / 512GB / 1TB<br>วัสดุตัวเครื่อง: ไทเทเนียม · สีดำ, น้ำเงิน, ธรรมชาติ, ขาว</p>
+        `;
+      } else if (model === '15promax') {
+        content = `
+          <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-max-titanium-nature-hero" alt="iPhone 15 Pro Max">
+          <h3>iPhone 15 Pro Max</h3>
+          <p>ขนาด 6.7 นิ้ว · ความจุ 256GB / 512GB / 1TB<br>วัสดุตัวเครื่อง: ไทเทเนียม · สีดำ, น้ำเงิน, ธรรมชาติ, ขาว</p>
+        `;
+      }
+      modalContent.innerHTML = content + `<button class="close-btn" onclick="closeModal()">ปิด</button>`;
+      modal.style.display = 'flex';
     }
 
-    function closePopup() {
-      document.getElementById("popup").style.display = "none";
+    function closeModal() {
+      modal.style.display = 'none';
     }
   </script>
 </body>

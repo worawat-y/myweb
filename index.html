@@ -1,104 +1,201 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Penthouse Luxury Condo</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f8f8;
-            color: #333;
-        }
-        header {
-            background-color: #fff;
-            text-align: center;
-            padding: 30px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        header img {
-            max-width: 180px;
-        }
-        .hero {
-            background-color: #001f3f;
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-            font-size: 2em;
-            font-weight: bold;
-        }
-        .content {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-        .gallery img {
-            width: 320px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-        .price {
-            font-size: 2em;
-            color: #b12704;
-            text-align: center;
-            margin: 30px 0;
-        }
-        .ad-text {
-            font-size: 1.2em;
-            text-align: center;
-            margin-bottom: 40px;
-            color: #555;
-        }
-        footer {
-            background-color: #001f3f;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Titanium Store</title>
+
+  <!-- ฟอนต์แบบโมเดิร์น (Inter) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f9f9f9, #dcdcdc);
+      color: #1a1a1a;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 8%;
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #111;
+      letter-spacing: 0.5px;
+    }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: #555;
+      font-weight: 400;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #000;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 120px 20px 60px;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      font-weight: 500;
+      color: #111;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+
+    .product-card {
+      background: linear-gradient(135deg, #ececec, #cfcfcf);
+      border-radius: 24px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: inset 0 1px 4px rgba(255,255,255,0.5), 0 10px 25px rgba(0,0,0,0.07);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    .product-card img {
+      width: 80%;
+      border-radius: 20px;
+      transition: transform 0.4s ease;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .product-name {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #222;
+    }
+
+    .product-price {
+      margin-top: 8px;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    /* ===== จุดขยับ (interactive particles) ===== */
+    .dot {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #b4b4b4, #7a7a7a);
+      opacity: 0.4;
+      pointer-events: none;
+      transition: transform 0.2s ease-out;
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <img src="APPLE_LOGO_IMAGE_URL_HERE.png" alt="โลโก้บริษัท">
-    </header>
+  <header>
+    <h1>Titanium Store</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Products</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
 
-    <div class="hero">
-        Apple เปิดตัว iPhone 15
+  <section class="hero">
+    <h2>Experience the Titanium Aesthetic</h2>
+    <p>Minimal. Elegant. Inspired by iPhone 15 Pro Max.</p>
+  </section>
+
+  <section class="products">
+    <div class="product-card">
+      <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15pro-titanium-1" alt="iPhone 15 Pro">
+      <div class="product-name">iPhone 15 Pro Max</div>
+      <div class="product-price">฿48,900</div>
     </div>
-
-    <div class="content">
-        <div class="gallery">
-            <img src="PUT_LIVING_ROOM_IMAGE_URL_HERE.png" alt="ห้องนั่งเล่น">
-            <img src="PUT_BEDROOM_IMAGE_URL_HERE.png" alt="ห้องนอน">
-            <img src="PUT_KITCHEN_IMAGE_URL_HERE.png" alt="ห้องครัว">
-            <img src="PUT_BATHROOM_IMAGE_URL_HERE.png" alt="ห้องน้ำ">
-            <img src="PUT_INTERIOR_IMAGE_URL_HERE.png" alt="การออกแบบภายใน">
-        </div>
-
-        <div class="price">
-            ราคาเริ่มต้นเพียง 32,900 บาท
-        </div>
-
-        <div class="ad-text">
-            นิยามใหม่ของความล้ำ ด้วยดีไซน์ที่เหนือระดับ<br>
-            เพราะความสมบูรณ์แบบ ไม่ควรมีข้อแม้ใดๆ
-        </div>
+    <div class="product-card">
+      <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/watch-ultra2-titanium" alt="Apple Watch Ultra">
+      <div class="product-name">Apple Watch Ultra 2</div>
+      <div class="product-price">฿31,900</div>
     </div>
+    <div class="product-card">
+      <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-pro-14-titanium" alt="MacBook Pro 14”">
+      <div class="product-name">MacBook Pro 14”</div>
+      <div class="product-price">฿69,900</div>
+    </div>
+  </section>
 
-    <footer>
-        © 2025 apple store Co., Ltd. | โทร: 1800-019-900
-    </footer>
+  <footer>© 2025 Titanium Store. All Rights Reserved.</footer>
+
+  <script>
+    // ===== จุดเคลื่อนไหวตามเมาส์ (soft motion effect) =====
+    const dots = [];
+    const DOT_COUNT = 12;
+
+    for (let i = 0; i < DOT_COUNT; i++) {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      document.body.appendChild(dot);
+      dots.push({ el: dot, x: 0, y: 0 });
+    }
+
+    document.addEventListener('mousemove', (e) => {
+      dots.forEach((dot, index) => {
+        const delay = index * 0.02;
+        setTimeout(() => {
+          dot.el.style.transform = `translate(${e.clientX}px, ${e.clientY}px) scale(${1 - index * 0.05})`;
+          dot.el.style.opacity = 0.5 - index * 0.03;
+        }, delay * 100);
+      });
+    });
+  </script>
 
     <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
 <script type="module">
